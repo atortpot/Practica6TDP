@@ -1,0 +1,51 @@
+@startuml
+!theme cerulean
+
+class Tablero {
+    - tablero: char[][]
+    + inicializarTablero(): void
+    + mostrarTablero(): void
+}
+
+class JuegoDeOvejas {
+    - tablero: Tablero
+    + iniciarJuego(): void
+    + realizarMovimiento(posicion: String): void
+    + esMovimientoValido(posicion: String): boolean
+}
+
+interface Movimiento {
+    + ejecutar(tablero: Tablero, posicion: String): void
+}
+
+class MovimientoArriba implements Movimiento {
+    + ejecutar(tablero: Tablero, posicion: String): void
+}
+
+class MovimientoAbajo implements Movimiento {
+    + ejecutar(tablero: Tablero, posicion: String): void
+}
+
+class MovimientoIzquierda implements Movimiento {
+    + ejecutar(tablero: Tablero, posicion: String): void
+}
+
+class MovimientoDerecha implements Movimiento {
+    + ejecutar(tablero: Tablero, posicion: String): void
+}
+
+JuegoDeOvejas --> Tablero : utiliza >
+JuegoDeOvejas ..> Movimiento : realiza >
+Movimiento <|.. MovimientoArriba
+Movimiento <|.. MovimientoAbajo
+Movimiento <|.. MovimientoIzquierda
+Movimiento <|.. MovimientoDerecha
+
+note right of JuegoDeOvejas
+  La clase JuegoDeOvejas controla el flujo principal
+  del juego, incluyendo la inicialización del tablero,
+  la ejecución de movimientos y la verificación de
+  la condición de victoria.
+end note
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+!theme cerulean
+
+class Lienzo {
+    - ancho: int
+    - alto: int
+    - lienzo: char[][]
+    + Lienzo(ancho: int, alto: int)
+    + mostrarLienzo(): void
+}
+
+class ArteASCII {
+    - lienzo: Lienzo
+    + ArteASCII(ancho: int, alto: int)
+    + ejecutar(): void
+    + mostrarMenu(): String
+    + ejecutarAccion(opcion: String): void
+    + dibujarCaracter(posicion: String, caracter: char): void
+    + dibujarRectangulo(esquina1: String, esquina2: String, caracter: char): void
+    + cambiarColor(posicion: String, nuevoCaracter: char): void
+}
+
+ArteASCII --> Lienzo : "Utiliza"
+
+note right of Lienzo
+  Representa el lienzo del taller de arte ASCII,
+  permitiendo dibujar sobre él y mostrar el resultado.
+end note
+
+note right of ArteASCII
+  Controla la lógica principal del taller,
+  ofreciendo un menú para realizar acciones
+  sobre el lienzo y ejecutándolas.
+end note
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+!theme cerulean
+
+class Tablero {
+    - tablero : int[][]
+    - tamano : int
+    + Tablero(tamano : int)
+    + inicializarTablero() : void
+    + mostrarTablero() : void
+    + disparar(fila : int, columna : int) : int
+}
+
+class Juego {
+    - tablero : Tablero
+    - scanner : Scanner
+    + Juego()
+    + introducirEnteroEntreLimites(minimo : int, maximo : int) : int
+    + iniciarJuego() : void
+}
+
+Juego --> "1" Tablero : contiene
+Juego --> "1" Scanner : utiliza
+
+note right of Tablero
+  Tablero gestiona el estado del tablero,
+  incluyendo inicialización, mostrar el tablero,
+  y procesar disparos.
+end note
+
+note right of Juego
+  Juego encapsula la lógica principal del juego,
+  interactuando con el usuario y utilizando
+  un objeto Tablero para el estado del juego.
+end note
+
+@enduml

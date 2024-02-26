@@ -1,0 +1,17 @@
+@startuml
+!theme cerulean
+
+class ManipulacionTablas {
+    +main(args : String[]) : void
+    +crearTablaAleatoria(tamaño : int, mínimo : int, máximo : int) : List<Integer>
+    +encontrarMayor(tabla : List<Integer>) : int
+}
+
+note right of ManipulacionTablas
+  ManipulacionTablas contiene todas las operaciones para
+  generar una tabla de enteros aleatorios y encontrar el
+  valor máximo dentro de ella. Se incluyen métodos estáticos
+  para la creación de la tabla y la búsqueda del máximo.
+end note
+
+@enduml

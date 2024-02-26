@@ -1,0 +1,28 @@
+@startuml
+!theme cerulean
+
+class ComparacionNumerosReales {
+  +main(args : String[]) : void
+  +mayorDeDos(numero1 : double, numero2 : double) : double
+  +clasificarNumeros(numero1 : double, numero2 : double) : int
+}
+
+class EntradaUsuario {
+  +leerNumero(prompt : String) : double
+}
+
+ComparacionNumerosReales ..> EntradaUsuario : usa >
+
+note right of ComparacionNumerosReales
+  La clase ComparacionNumerosReales contiene
+  métodos estáticos para comparar y clasificar
+  números reales. No mantiene estado.
+end note
+
+note left of EntradaUsuario
+  EntradaUsuario simula una clase auxiliar
+  para abstraer la lógica de entrada de datos,
+  permitiendo lecturas de números desde la consola.
+end note
+
+@enduml
